@@ -87,6 +87,7 @@ app.listen(process.env.PORT || 3000, function() {
   sql.connect().then(function(data) {
 		console.log("Connected");
 	}).catch(function(err) {
+    console.log("CONNECTION FAILED")
 		console.log(err);
 	});
   console.log("Server Listening");

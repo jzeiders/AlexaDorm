@@ -2,13 +2,16 @@
 
 var pg = require('pg');
 
-// process.env.PGUSER = 'alexadorm';
-// process.env.PGDATABASE = 'data';
-// process.env.PGPASSWORD = process.env.AWSPASS;
-// process.env.PGHOST = 'addb.cfj01akmcn5a.us-west-2.rds.amazonaws.com';
-// process.env.port = 5432;
-// console.log(process.env)
-var client = new pg.Client();
+var pgConfig = {
+		user: 'alexadorm', //env var: PGUSER
+		database: 'data', //env var: PGDATABASE
+		password: process.env.PGPASSWORD, //env var: PGPASSWORD
+		host: 'addb.cfj01akmcn5a.us-west-2.rds.amazonaws.com', // Server hosting the postgres database
+		port: 5432, //env var: PGPORT
+		max: 10, // max number of clients in the pool
+		idleTimeoutMillis: 30000
+	}
+var client = new pg.Client(pgConfig);
 
 exports.connect = function() {
 	return new Promise(function(res, rej) {
