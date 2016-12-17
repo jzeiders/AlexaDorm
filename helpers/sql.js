@@ -11,13 +11,15 @@ var pgConfig = {
 		max: 10, // max number of clients in the pool
 		idleTimeoutMillis: 30000
 	}
-var client = new pg.Client(pgConfig);
-
+console.log(pgConfig);
+var pool = new pg.Pool(pgConfig);
+var client;
 exports.connect = function() {
 	return new Promise(function(res, rej) {
-		client.connect(function(err) {
+		pool.connect(function(err, _client,done) {
 			if (err) rej(err);
-			return res("Connected");
+      client = _client;
+			res("Connected");
 		});
 	});
 };
