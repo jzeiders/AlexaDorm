@@ -2,11 +2,12 @@
 
 var pg = require('pg');
 
-process.env.PGUSER = 'alexadorm';
-process.env.PGDATABASE = 'data';
-process.env.PGPASSWORD = process.env.AWSPASS;
-process.env.PGHOST = 'addb.cfj01akmcn5a.us-west-2.rds.amazonaws.com';
-process.env.port = 5432;
+// process.env.PGUSER = 'alexadorm';
+// process.env.PGDATABASE = 'data';
+// process.env.PGPASSWORD = process.env.AWSPASS;
+// process.env.PGHOST = 'addb.cfj01akmcn5a.us-west-2.rds.amazonaws.com';
+// process.env.port = 5432;
+// console.log(process.env)
 
 var client = new pg.Client();
 
