@@ -8,12 +8,16 @@ var pg = require('pg');
 // process.env.PGHOST = 'addb.cfj01akmcn5a.us-west-2.rds.amazonaws.com';
 // process.env.port = 5432;
 // console.log(process.env)
-
 var client = new pg.Client();
 
-client.connect(function(err) {
-	if (err) console.log(err);
-});
+exports.connect = function() {
+	return new Promise(function(res, rej) {
+		client.connect(function(err) {
+			if (err) rej(err);
+			return res("Connected");
+		});
+	});
+};
 
 var query = function(query) {
 	return new Promise(function(res, rej) {
