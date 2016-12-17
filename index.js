@@ -84,6 +84,7 @@ app.get("/dropTables", function(req,res){
   });
 });
 app.listen(process.env.PORT || 3000, function() {
+  console.log(process.env.PGPASSWORD)
   sql.connect().then(function(data) {
 		console.log("Connected");
 	}).catch(function(err) {
