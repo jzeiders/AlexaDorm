@@ -90,5 +90,21 @@ exports.addGroup = function(group) {
 			res(data);
 		});
 	});
-
+}
+exports.removeMember = function(number, group) {
+	var params = {
+		TableName: table,
+		Key: {
+			"name": group,
+			"member": number
+		}
+	};
+	return new Promise(function(res, rej) {
+		DB.delete(params, function(err, data) {
+			if (err) {
+				rej(err);
+			}
+			res(data);
+		});
+	})
 };

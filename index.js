@@ -1,6 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var handlers = require("./helpers/handlers.js");
+var sql = require("./helpers/sql.js");
 
 var app = express();
 
@@ -15,7 +15,7 @@ app.get("/", function(req, res) {
 
 //Returns List of all group name
 app.get("/groups", function(req, res) {
-	handlers.getGroups().then(function(data) {
+	sql.getGroups().then(function(data) {
 		res.send(data);
 	}).catch(function(err) {
 		res.status(500).send(err);
@@ -23,7 +23,7 @@ app.get("/groups", function(req, res) {
 });
 //Returns data for given group, property name: group
 app.post("/groups", function(req, res) {
-	handlers.getGroup(req.body.group).then(function(data) {
+	sql.getGroup(req.body.group).then(function(data) {
 		res.send(data);
 	}).catch(function(err) {
 		res.status(500).send(err);
@@ -34,7 +34,7 @@ app.post("/groups", function(req, res) {
 app.post("/addMember", function(req, res) {
 	var number = req.body.number;
 	var group = req.body.group;
-	handlers.addMember(number, group).then(function(data) {
+	sql.addMember(number, group).then(function(data) {
 		res.send("Success");
 	}).catch(function(err) {
 		res.status(500).send(err);
@@ -44,13 +44,45 @@ app.post("/addMember", function(req, res) {
 //Adds Group, property name: Group
 app.post("/addGroup", function(req, res) {
 	var group = req.body.group;
-	handlers.addGroup(group).then(function(data) {
+	sql.addGroup(group).then(function(data) {
 		res.send("Success");
 	}).catch(function(err) {
 		res.status(500).send(err);
 	});
 });
+app.post("/deleteGroup", function(req,res){
+  var group = req.body.group;
+  sql.deleteGroup(group).then(function(data){
+    res.send("Success");
+  }).catch(function(err){
+    res.status(500).send(err);
+  });
+});
 
+app.post("/deleteMember", function(req,res){
+  var number = req.body.number;
+  var group = req.body.group;
+  sql.deleteMember(number, group).then(function(data) {
+    res.send("Success");
+  }).catch(function(err) {
+    res.status(500).send(err);
+  });
+});
+app.get("/createTables", function(req,res){
+  sql.createTables().then(function(data) {
+    res.send("Success");
+  }).catch(function(err) {
+    res.status(500).send(err);
+  });
+});
+
+app.get("/dropTables", function(req,res){
+  sql.dropTables().then(function(data) {
+    res.send("Success");
+  }).catch(function(err) {
+    res.status(500).send(err);
+  });
+});
 app.listen(process.env.PORT || 3000, function() {
 	console.log("Server Listening");
 });

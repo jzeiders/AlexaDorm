@@ -1,32 +1,33 @@
 {
-	"name": "alexadorm",
-	"version": "0.0.0",
-	"description": "Alexa Skill for College Students",
-	"main": "index.js",
-	"scripts": {
-    "start": "AWS_ACCESS_KEY_ID='AKIAIU37KQMDIGHXS6XQ' AWS_SECRET_ACCESS_KEY='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' node index.js",
-    "dev": "AWS_ACCESS_KEY_ID='AKIAIU37KQMDIGHXS6XQ' AWS_SECRET_ACCESS_KEY='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' nodemon index.js",
+  "name": "alexadorm",
+  "version": "0.0.0",
+  "description": "Alexa Skill for College Students",
+  "main": "index.js",
+  "scripts": {
+    "start": "AWSPASS='alexadorm' node index.js",
+    "dev": "AWSPASS='alexadorm' nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jzeiders/AlexaDorm.git"
-	},
-	"author": "John Zeiders",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/jzeiders/AlexaDorm/issues"
-	},
-	"homepage": "https://github.com/jzeiders/AlexaDorm#readme",
-	"dependencies": {
-		"alexa-sdk": "^1.0.6",
-		"aws-sdk": "^2.7.10",
-		"body-parser": "^1.15.2",
-		"express": "^4.14.0",
-		"promises": "^0.2.5"
-	},
-	"devDependencies": {
-		"chai": "^3.5.0",
-		"mocha": "^3.2.0"
-	}
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzeiders/AlexaDorm.git"
+  },
+  "author": "John Zeiders",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jzeiders/AlexaDorm/issues"
+  },
+  "homepage": "https://github.com/jzeiders/AlexaDorm#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.6",
+    "aws-sdk": "^2.7.10",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "pg": "^6.1.2",
+    "promises": "^0.2.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }
